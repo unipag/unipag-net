@@ -14,8 +14,8 @@ Install using NuGet (recommended)::
 
     PM> Install-Package Unipag
 
-API keys
---------
+API keys configuration
+----------------------
 
 To work with Unipag API, you will need to provide an API key. Get your
 API keys at `<my.unipag.com>`_ > API keys. API key can be defined
@@ -35,6 +35,9 @@ class:
     Unipag.Config.ApiKey = "<your-secret-API-key>";
 
 Please note that Unipag.Config setting will have priority over App.config.
+
+API keys for multiple Unipag accounts
+-------------------------------------
 
 If your application deals with multiple Unipag accounts, you may find that the
 most convenient way will be to pass API keys directly to methods which
