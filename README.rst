@@ -18,7 +18,7 @@ API keys configuration
 ----------------------
 
 To work with Unipag API, you will need to provide an API key. Get your
-API keys at `<my.unipag.com>`_ > API keys. API key can be defined
+API keys at `<https://my.unipag.com>`_ > API keys. API key can be defined
 globally in your App.config as following:
 
 .. code:: xml
@@ -175,7 +175,7 @@ Handle webhook from Unipag
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Create a standalone page on your website which will handle events sent by
-Unipag. Register URL of this page at `<my.unipag.com>`_ > Webhooks.
+Unipag. Register URL of this page at `<https://my.unipag.com>`_ > Webhooks.
 Initialize page code as following (example for ASP.NET MVC):
 
 .. code:: c#
