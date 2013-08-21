@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Unipag</id>
+    <version>0.2.4</version>
+    <title>Unipag</title>
+    <authors>ivelum</authors>
+    <owners>ivelum</owners>
+    <projectUrl>http://unipag.com</projectUrl>
+    <iconUrl>https://raw.github.com/unipag/unipag-net/master/res/img/logo_128.png</iconUrl>
+	<licenseUrl>https://raw.github.com/unipag/unipag-net/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Unipag SDK for .NET Framework</description>
+	<releaseNotes></releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <tags>unipag payments payment-systems ecommerce banks credit-cards acquiring online-payments</tags>
+	<dependencies>
+      <dependency id="Newtonsoft.Json" version="[4.5,6)" />
+    </dependencies>
+  </metadata>
+</package>
