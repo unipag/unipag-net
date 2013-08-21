@@ -29,6 +29,11 @@ namespace Unipag
             return this;
         }
 
+        public UObject FromString(string jsonData)
+        {
+            return FromObject(JObject.Parse(jsonData));
+        }
+
         public UObject(UObject obj)
         {
             FromObject(obj);

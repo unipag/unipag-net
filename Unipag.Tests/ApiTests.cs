@@ -19,7 +19,7 @@ namespace Unipag.Tests
             // with gateway name, instead of dictionary with gateway_name and read_only flag.
             var conn = new Connection();
             // Try old version first
-            conn.FromObject(JObject.Parse(
+            conn.FromString(
                 "{ " +
                     "\"object\": \"connection\", " +
                     "\"id\": \"42\", " +
@@ -27,15 +27,15 @@ namespace Unipag.Tests
                         "\"name\": \"old version\", " +
                         "\"read_only\": false " +
                     "} " +
-                "}"));
+                "}");
             Assert.AreEqual(conn.PaymentGateway, "old version");
             // Then new version
-            conn.FromObject(JObject.Parse(
+            conn.FromString(
                 "{ " +
                     "\"object\": \"connection\", " +
                     "\"id\": \"42\", " +
                     "\"payment_gateway\": \"new version\" " +
-                "}"));
+                "}");
             conn.Properties["payment_gateway"] = "new version";
             Assert.AreEqual(conn.PaymentGateway, "new version");
 
