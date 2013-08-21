@@ -42,7 +42,7 @@ interact with Unipag API:
 
 .. code:: c#
 
-    var invoice = Unipag.Invoice.Get("424242424242", <API-key-for-this-account>);
+    var invoice = Unipag.Invoice.Get("424242424242", "<API-key-for-this-account>");
 
 Providing API key directly in method call has highest priority and will override
 both App.config and Unipag.Config settings.
@@ -150,7 +150,7 @@ Install Unipag widget
 Try our widget for payments workflow handling. It's quite optional, but you
 might find it handy and time-saving.
 
-::
+.. code:: html
 
     <script type="text/javascript"
         src="//d3oe3cumn3db7.cloudfront.net/uw3/js/uw3.min.js"
