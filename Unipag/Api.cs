@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics;
+using System.Reflection;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,18 +14,28 @@ namespace Unipag
     {
         public static string Request(string method, string url, string parameters, string apiKey)
         {
-            // Make request object
+            // Make request URL and request object
             var reqUrl = Config.ApiUrl + url;
             if (method.ToLower() == "get")
-            {
                 reqUrl += string.Format("?{0}", parameters);
-            }
             var req = (HttpWebRequest)WebRequest.Create(reqUrl);
             req.Method = method;
             req.ContentType = "application/x-www-form-urlencoded";
+
+            // Add auth
             var reqKey = string.IsNullOrEmpty(apiKey) ? Config.ApiKey : apiKey;
             var authBase64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:", reqKey)));
             req.Headers.Add("Authorization", string.Format("Basic {0}", authBase64));
+
+            // Add system information
+            req.UserAgent = string.Format("Unipag Client for .Net v{0}", FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion);
+            var sysInfo = new JObject();
+            sysInfo["publisher"] = "Unipag";
+            sysInfo["platform"] = Environment.OSVersion.ToString();
+            sysInfo["language"] = string.Format("CLR {0}", Environment.Version.ToString());
+            req.Headers.Add("X-Unipag-User-Agent-Info", sysInfo.ToString(Formatting.None));
+
+            // Add parameters for requests other than GET
             if (method.ToLower() != "get")
             {
                 byte[] bytes = Encoding.UTF8.GetBytes(parameters);
