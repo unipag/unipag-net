@@ -85,7 +85,7 @@ namespace Unipag.Tests
             Assert.False(inv.Deleted);
             inv.Delete();
             Assert.True(inv.Deleted);
-            inv.UnDelete();
+            inv.Undelete();
             Assert.False(inv.Deleted);
             inv.Deleted = true;
             inv.Save();
@@ -162,7 +162,7 @@ namespace Unipag.Tests
         [Test]
         public void InvoiceList()
         {
-            var invoices = Invoice.List(null);
+            var invoices = Invoice.List();
             Assert.AreEqual(invoices[0].ApiKey, Config.ApiKey);
             var inv1 = invoices[0];
             var inv2 = Invoice.Get(inv1.Id);

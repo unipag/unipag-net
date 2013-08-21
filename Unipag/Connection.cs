@@ -78,7 +78,17 @@ namespace Unipag
 
         public static List<Connection> List(Dictionary<string, object> filters)
         {
-            return List(filters, null);
+            return BaseList<Connection>(filters, null);
+        }
+
+        public static List<Connection> List(string apiKey)
+        {
+            return BaseList<Connection>(null, apiKey);
+        }
+
+        public static List<Connection> List()
+        {
+            return BaseList<Connection>(null, null);
         }
 
         public static Connection Get(string id, string apiKey)

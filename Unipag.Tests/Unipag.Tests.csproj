@@ -40,7 +40,8 @@
       <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="Unipag">
+    <Reference Include="Unipag, Version=0.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Unipag\bin\Debug\Unipag.dll</HintPath>
     </Reference>
   </ItemGroup>

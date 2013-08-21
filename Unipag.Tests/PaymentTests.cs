@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace Unipag.Tests
@@ -47,8 +48,19 @@ namespace Unipag.Tests
             });
             Assert.False(payment.Cancelled);
 
-            payment.Cancel();
+            Payment.Cancel(payment.Id);
+            payment.Reload();
             Assert.True(payment.Cancelled);
+        }
+
+        [Test]
+        public void PaymentsList()
+        {
+            var payments = Payment.List(new Dictionary<string, object>
+            {
+                {"count", 3},
+            });
+            Assert.AreEqual(3, payments.Count);
         }
 
         [Test]

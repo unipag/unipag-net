@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
 namespace Unipag
@@ -56,6 +57,26 @@ namespace Unipag
         public static Event Get(string id)
         {
             return BaseGet<Event>(id, null);
+        }
+
+        public static List<Event> List(Dictionary<string, object> filters, string apiKey)
+        {
+            return BaseList<Event>(filters, apiKey);
+        }
+
+        public static List<Event> List(Dictionary<string, object> filters)
+        {
+            return BaseList<Event>(filters, null);
+        }
+
+        public static List<Event> List(string apiKey)
+        {
+            return BaseList<Event>(null, apiKey);
+        }
+
+        public static List<Event> List()
+        {
+            return BaseList<Event>(null, null);
         }
 
         public Event Reload()

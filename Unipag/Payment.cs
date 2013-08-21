@@ -146,6 +146,26 @@ namespace Unipag
             return BaseGet<Payment>(id, null);
         }
 
+        public static List<Payment> List(Dictionary<string, object> filters, string apiKey)
+        {
+            return BaseList<Payment>(filters, apiKey);
+        }
+
+        public static List<Payment> List(Dictionary<string, object> filters)
+        {
+            return BaseList<Payment>(filters, null);
+        }
+
+        public static List<Payment> List(string apiKey)
+        {
+            return BaseList<Payment>(null, apiKey);
+        }
+
+        public static List<Payment> List()
+        {
+            return BaseList<Payment>(null, null);
+        }
+
         public static Payment Create(Payment payment, string apiKey)
         {
             return BaseCreate(payment, apiKey);
@@ -166,6 +186,18 @@ namespace Unipag
         {
             BaseDelete();
             return this;
+        }
+
+        public static Payment Cancel(string id, string apiKey)
+        {
+            var payment = new Payment { Id = id, ApiKey = apiKey };
+            payment.Cancel();
+            return payment;
+        }
+
+        public static Payment Cancel(string id)
+        {
+            return Cancel(id, null);
         }
 
         public Payment Reload()

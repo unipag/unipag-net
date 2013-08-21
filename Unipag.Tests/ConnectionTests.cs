@@ -7,7 +7,7 @@ namespace Unipag.Tests
         [Test]
         public void ConnectionList()
         {
-            var connections = Connection.List(null);
+            var connections = Connection.List();
             foreach (var conn in connections)
             {
                 if (conn.PaymentGateway == "liqpay.com")

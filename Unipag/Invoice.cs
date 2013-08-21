@@ -125,7 +125,17 @@ namespace Unipag
 
         public static List<Invoice> List(Dictionary<string, object> filters)
         {
-            return List(filters, null);
+            return BaseList<Invoice>(filters, null);
+        }
+
+        public static List<Invoice> List(string apiKey)
+        {
+            return BaseList<Invoice>(null, apiKey);
+        }
+
+        public static List<Invoice> List()
+        {
+            return BaseList<Invoice>(null, null);
         }
 
         public static Invoice Create(Invoice invoice)
@@ -156,7 +166,19 @@ namespace Unipag
             return this;
         }
 
-        public Invoice UnDelete()
+        public static Invoice Delete(string id, string apiKey)
+        {
+            var inv = new Invoice { Id = id, ApiKey = apiKey };
+            inv.Delete();
+            return inv;
+        }
+
+        public static Invoice Delete(string id)
+        {
+            return Delete(id, null);
+        }
+
+        public Invoice Undelete()
         {
             Properties["deleted"] = false;
             BaseSave();
