@@ -72,6 +72,10 @@ Sample usage
 Create invoice
 ~~~~~~~~~~~~~~
 
+Create a new instance of Unipag.Invoice class and either call .Save() on it,
+or pass to Invoice.Create method. Both methods return Invoice instance with
+latest information updated from Unipag. Here is an example with Invoice.Create:
+
 .. code:: c#
 
     using System;
