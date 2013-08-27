@@ -17,22 +17,24 @@ namespace Unipag
             }
 
             if (httpStatusCode == HttpStatusCode.InternalServerError)
-                return new ServerErrorException(exceptionMessage, httpStatusCode, unipagError);
+                return new InternalServerErrorException(exceptionMessage, httpStatusCode, unipagError);
 
-            switch (unipagError.Code)
+            switch ((int)httpStatusCode)
             {
-                case "unauthorized":
+                case 400:
+                    return new BadRequestException(exceptionMessage, httpStatusCode, unipagError);
+                case 401:
                     return new UnauthorizedException(exceptionMessage, httpStatusCode, unipagError);
-                case "bad_params":
-                    return new BadParamsException(exceptionMessage, httpStatusCode, unipagError);
-                case "not_found":
-                    return new NotFoundException(exceptionMessage, httpStatusCode, unipagError);
-                case "permission_denied":
-                    return new PermissionDeniedException(exceptionMessage, httpStatusCode, unipagError);
-                case "processing_error":
-                    return new ProcessingErrorException(exceptionMessage, httpStatusCode, unipagError);
-                case "forbidden":
+                case 403:
                     return new ForbiddenException(exceptionMessage, httpStatusCode, unipagError);
+                case 404:
+                    return new NotFoundException(exceptionMessage, httpStatusCode, unipagError);
+                case 405:
+                    return new MethodNotAllowedException(exceptionMessage, httpStatusCode, unipagError);
+                case 500:
+                    return new InternalServerErrorException(exceptionMessage, httpStatusCode, unipagError);
+                case 503:
+                    return new ServiceUnavailableException(exceptionMessage, httpStatusCode, unipagError);
                 default:
                     return new Exception(exceptionMessage, httpStatusCode, unipagError);
             }
