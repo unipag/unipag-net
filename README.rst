@@ -220,17 +220,17 @@ Tip: webhooks can be a pain to debug. Check out Unipag Network Activity log, it
 is available at `<https://my.unipag.com>`_ > Network Activity. You may find it
 useful for your webhook handlers debugging.
 
-Usage of invoice "custom_data" property
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Usage of Invoice.CustomData property
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Invoice objects in Unipag have an optional "custom_data" property, which store
-up to 32KB of arbitrary data in JSON format. You can freely use this field to
-store additional application-specific information about your invoices.
+Invoice objects in Unipag API have an optional "custom_data" field, which can
+store up to 32KB of arbitrary data in JSON format. You can freely use this field
+to store additional application-specific information about your invoices.
 
 In Unipag Client for .Net, custom_data field is mapped into CustomData property
-and has JObject type. Please refer to
+and has JToken type. Please refer to
 `Json.Net documentation <http://james.newtonking.com/projects/json/help/>`_
-for full description of JObject API. Here is some very basic example:
+for full description of JToken API. Here is some very basic example:
 
 .. code:: c#
 
