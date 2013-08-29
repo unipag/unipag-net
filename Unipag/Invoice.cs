@@ -70,9 +70,9 @@ namespace Unipag
             set { Properties["reference"] = value; }
         }
 
-        public JObject CustomData
+        public JToken CustomData
         {
-            get { return (JObject)Properties["custom_data"]; }
+            get { return (JToken)Properties["custom_data"]; }
         }
 
         #endregion
