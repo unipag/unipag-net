@@ -33,6 +33,8 @@ namespace Unipag
                     return new MethodNotAllowedException(exceptionMessage, httpStatusCode, unipagError);
                 case 500:
                     return new InternalServerErrorException(exceptionMessage, httpStatusCode, unipagError);
+                case 502:
+                    return new BadGatewayException(exceptionMessage, httpStatusCode, unipagError);
                 case 503:
                     return new ServiceUnavailableException(exceptionMessage, httpStatusCode, unipagError);
                 default:
