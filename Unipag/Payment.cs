@@ -48,6 +48,7 @@ namespace Unipag
         public JObject Params
         {
             get { return (JObject)Properties["params"]; }
+            set { Properties["params"] = value; }
         }
 
         public string ReturnUrl

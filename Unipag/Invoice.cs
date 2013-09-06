@@ -72,7 +72,8 @@ namespace Unipag
 
         public JToken CustomData
         {
-            get { return (JToken)Properties["custom_data"]; }
+            get { return Properties["custom_data"]; }
+            set { Properties["custom_data"] = value;  }
         }
 
         #endregion

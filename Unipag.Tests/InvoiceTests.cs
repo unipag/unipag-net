@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System.Globalization;
 
@@ -115,6 +116,11 @@ namespace Unipag.Tests
 
             var inv2 = Invoice.Get(inv.Id);
             Assert.AreEqual(inv.ToString(), inv2.ToString());
+            Assert.AreEqual(42.5m, inv2.CustomData.Value<decimal>("decimal"));
+
+            inv.CustomData = JObject.Parse("{\"int\": 9000}");
+            inv.Save();
+            Assert.AreEqual(9000, inv.CustomData.Value<int>("int"));
         }
 
         [Test]
