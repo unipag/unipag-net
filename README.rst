@@ -235,7 +235,6 @@ for full description of JToken API. Here is some very basic example:
 .. code:: c#
 
     using System;
-    using System.Globalization;
     using Unipag;
 
     namespace MyApp
@@ -253,7 +252,7 @@ for full description of JToken API. Here is some very basic example:
                 };
                 inv.CustomData["text"] = "Some text";
                 inv.CustomData["int"] = 9000;
-                inv.CustomData["decimal"] = 42.5m.ToString(CultureInfo.InvariantCulture);
+                inv.CustomData["decimal"] = 42.5m;
                 inv.Save();
 
                 Console.WriteLine(inv.CustomData.ToString());

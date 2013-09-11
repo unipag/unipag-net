@@ -111,7 +111,7 @@ namespace Unipag.Tests
             inv.CustomData["sixteen"] = "being tested";
             inv.CustomData["bool"] = false;
             inv.CustomData["int"] = 42;
-            inv.CustomData["decimal"] = 42.5m.ToString(CultureInfo.InvariantCulture);
+            inv.CustomData["decimal"] = 42.5m;
             inv.Save();
 
             var inv2 = Invoice.Get(inv.Id);

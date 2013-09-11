@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Globalization;
+using System.Web;
 using System.Collections.Generic;
 using System.Collections;
 using Newtonsoft.Json.Linq;
@@ -45,10 +46,33 @@ namespace Unipag
                 return Urlify(list, string.Format("{0}{1}", pfx, key));
             }
 
+            string type;
+            object sourceValue;
+            string valueStr;
+
+            if (value is JValue)
+            {
+                var jvalue = (JValue)value;
+                type = jvalue.Value == null ? "string" : jvalue.Value.GetType().Name.ToLower();
+                sourceValue = jvalue.Value;
+            }
+            else
+            {
+                type = value.GetType().Name.ToLower();
+                sourceValue = value;
+            }
+
+            if (type == "decimal")
+                valueStr = ((decimal) sourceValue).ToString(CultureInfo.InvariantCulture);
+            else if (type == "double" || type == "float")
+                valueStr = ((double) sourceValue).ToString(CultureInfo.InvariantCulture);
+            else
+                valueStr = value.ToString();
+            
             return string.Format("{0}{1}={2}",
                 pfx,
                 HttpUtility.UrlEncode(key),
-                HttpUtility.UrlEncode(value.ToString()));
+                HttpUtility.UrlEncode(valueStr));
         }
 
         public static string Urlify(Dictionary<string, object> parameters, string prefix)

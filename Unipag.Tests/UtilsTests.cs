@@ -26,7 +26,7 @@ namespace Unipag.Tests
                 }},
             };
             Assert.AreEqual(
-                "key1=value1&key2=42&list__0=with+space&list__1=%c2%ae&dict__1=1&dict__a=1&dict__dikt__zero=0%2c0&dict__dikt__random=42%2c9000",
+                "key1=value1&key2=42&list__0=with+space&list__1=%c2%ae&dict__1=1&dict__a=1&dict__dikt__zero=0.0&dict__dikt__random=42.9000",
                 Utils.Urlify(dict));
         }
 
@@ -48,7 +48,7 @@ namespace Unipag.Tests
                     "}" +
                 "}");
             Assert.AreEqual(
-                "key1=value1&key2=42&list__0=with+space&list__1=%c2%ae&dict__1=1&dict__a=1&dict__dikt__zero=0&dict__dikt__random=42%2c9",
+                "key1=value1&key2=42&list__0=with+space&list__1=%c2%ae&dict__1=1&dict__a=1&dict__dikt__zero=0&dict__dikt__random=42.9",
                 Utils.Urlify(dict));
         }
     }
