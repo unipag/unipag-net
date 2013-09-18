@@ -22,7 +22,8 @@ namespace Unipag
             {
                 var configUrl = ConfigurationManager.AppSettings["UnipagApiUrl"];
                 var defaultUrl = string.IsNullOrEmpty(configUrl) ? DefaultApiUrl : configUrl;
-                return string.IsNullOrEmpty(_apiUrl) ? defaultUrl : _apiUrl;
+                var apiUrl = string.IsNullOrEmpty(_apiUrl) ? defaultUrl : _apiUrl;
+                return apiUrl.EndsWith("/") ? apiUrl : apiUrl + "/";
             }
             set { _apiUrl = value; }
         }
