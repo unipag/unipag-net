@@ -3,6 +3,7 @@ using System.Web;
 using System.Collections.Generic;
 using System.Collections;
 using Newtonsoft.Json.Linq;
+using System;
 
 namespace Unipag
 {
@@ -66,6 +67,8 @@ namespace Unipag
                 valueStr = ((decimal) sourceValue).ToString(CultureInfo.InvariantCulture);
             else if (type == "double" || type == "float")
                 valueStr = ((double) sourceValue).ToString(CultureInfo.InvariantCulture);
+            else if (type == "datetime")
+                valueStr = ((DateTime)sourceValue).ToString("yyyy-MM-ddTHH:mm:ssZ");
             else
                 valueStr = value.ToString();
             

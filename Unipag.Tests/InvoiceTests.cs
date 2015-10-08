@@ -73,6 +73,26 @@ namespace Unipag.Tests
         }
 
         [Test]
+        public void InvoiceExpiresSwitchMonthDay()
+        {
+            var d = new DateTime(2050,10,5);
+            var inv = new Invoice
+            {
+                Amount = 43,
+                Currency = "RUB",
+                Expires = d
+            };
+            inv.Save();
+            var expires = inv.Expires;
+            inv.Save();
+
+            Assert.AreEqual(inv.Expires, expires);
+            var inv2 = Invoice.Get(inv.Id);
+            Assert.AreEqual(expires, inv2.Expires);
+        }
+
+
+        [Test]
         public void InvoiceDelete()
         {
             var inv = new Invoice
